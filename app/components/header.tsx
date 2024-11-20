@@ -1,5 +1,9 @@
 import Image from "next/image";
 
+const basePath = process.env.NEXT_PUBLIC_GITHUB_PAGES === 'true' 
+  ? `/${process.env.NEXT_PUBLIC_REPO_NAME}` 
+  : '';
+
 export default function Header() {
   return (
     <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
@@ -11,7 +15,7 @@ export default function Header() {
           <span>Умный поиск по базе Земелах</span>
           <Image
             className="rounded-xl"
-            src="/zemelah-logo.png"
+            src={`${basePath}/zemelah-logo.png`}
             alt="Zemelah Logo"
             width={40}
             height={40}
