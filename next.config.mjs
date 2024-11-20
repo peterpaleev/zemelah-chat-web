@@ -6,7 +6,7 @@ import webpack from "./webpack.config.mjs";
 const nextConfig = JSON.parse(fs.readFileSync("./next.config.json", "utf-8"));
 nextConfig.webpack = webpack;
 
-// Add basePath and assetPrefix for GitHub Pages
+// Add basePath and output configuration for GitHub Pages
 const isGithubActions = process.env.GITHUB_ACTIONS || false
 
 if (isGithubActions) {
@@ -15,5 +15,9 @@ if (isGithubActions) {
   nextConfig.assetPrefix = `/${repo}/`
 }
 
-// use withLlamaIndex to add necessary modifications for llamaindex library
+nextConfig.output = 'export'  // Ensure static export
+nextConfig.images = {
+  unoptimized: true  // Required for static export
+}
+
 export default withLlamaIndex(nextConfig);
