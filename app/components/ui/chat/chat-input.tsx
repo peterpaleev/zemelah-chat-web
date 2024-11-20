@@ -1,11 +1,15 @@
 "use client";
 
+import { Suspense } from "react";
 import { ChatInput, useChatUI, useFile } from "@llamaindex/chat-ui";
 import { DocumentPreview, ImagePreview } from "@llamaindex/chat-ui/widgets";
+import { useSearchParams } from 'next/navigation';
 import { LlamaCloudSelector } from "./custom/llama-cloud-selector";
 import { useClientConfig } from "./hooks/use-config";
 
-export default function CustomChatInput() {
+function ChatInputContent() {
+  const searchParams = useSearchParams();
+  const showFileButton = searchParams.get('fileButton') === 'true';
   const { requestData, isLoading, input } = useChatUI();
   const { backend } = useClientConfig();
   const {
@@ -67,7 +71,7 @@ export default function CustomChatInput() {
       </div>
       <ChatInput.Form>
         <ChatInput.Field />
-        <ChatInput.Upload onUpload={handleUploadFile} />
+        {showFileButton && <ChatInput.Upload onUpload={handleUploadFile} />}
         <LlamaCloudSelector />
         <ChatInput.Submit
           disabled={
@@ -76,5 +80,15 @@ export default function CustomChatInput() {
         />
       </ChatInput.Form>
     </ChatInput>
+  );
+}
+
+export default function CustomChatInput() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={<div>Loading...</div>}>
+        <ChatInputContent />
+      </Suspense>
+    </Suspense>
   );
 }

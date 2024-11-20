@@ -11,6 +11,18 @@ COPY . .
 RUN npm run build
 
 # ====================================
-FROM build as release
+FROM --platform=linux/amd64 node:20-alpine as release
 
-CMD ["npm", "run", "start"]
+WORKDIR /app
+COPY --from=build /app/out ./out
+
+# Install serve globally
+RUN npm install -g serve
+
+# Verify installation using npx
+RUN npx serve --version
+
+EXPOSE 3000
+
+# Use npx to run serve
+CMD ["npx", "serve", "-s", "out"]
