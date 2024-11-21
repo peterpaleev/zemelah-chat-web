@@ -1,5 +1,10 @@
 # Build and push (which you already have)
 docker build --platform linux/amd64 -t gcr.io/radius-vpn-439303/zemelah-frontend:v4 .
+
+# Run the app locally
+docker run -p 3000:3000 gcr.io/radius-vpn-439303/zemelah-frontend:v4
+
+# Push to GCR
 docker push gcr.io/radius-vpn-439303/zemelah-frontend:v4
 
 # Deploy to Cloud Run
@@ -9,6 +14,9 @@ gcloud run deploy zemelah-frontend \
   --region europe-west1 \
   --project radius-vpn-439303 \
   --allow-unauthenticated
+
+# Build the app locally
+npm run build
 
 # Serve the built app locally
 serve -s out

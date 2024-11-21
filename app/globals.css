@@ -88,8 +88,8 @@
     background-image: 
       linear-gradient(
         to bottom,
-        white 24%,
-        rgba(255, 255, 255, 0.8) 46%,
+        #f3d7d0 39%,
+        rgba(255, 255, 255, 0.8) 59%,
         rgba(255, 255, 255, 0.3) 73%,
         transparent
       ),
@@ -109,8 +109,8 @@
       background: 
         linear-gradient(
           to bottom,
-          white 24%,
-          rgba(255, 255, 255, 0.8) 46%,
+          #f3d7d0 39%,
+          rgba(255, 255, 255, 0.8) 59%,
           rgba(255, 255, 255, 0.3) 73%,
           transparent
         ),
