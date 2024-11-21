@@ -87,12 +87,39 @@
     background-color: #fff;
     background-image: radial-gradient(
         at 21% 11%,
-        rgba(186, 186, 233, 0.53) 0,
+        hsla(12.22, 36.99%, 71.37%, 0.53) 0,
         transparent 50%
       ),
-      radial-gradient(at 85% 0, hsla(46, 57%, 78%, 0.52) 0, transparent 50%),
-      radial-gradient(at 91% 36%, rgba(194, 213, 255, 0.68) 0, transparent 50%),
-      radial-gradient(at 8% 40%, rgba(251, 218, 239, 0.46) 0, transparent 50%);
+      radial-gradient(at 85% 0, hsla(4.54, 49.79%, 46.86%, 0.52) 0, transparent 50%),
+      radial-gradient(at 91% 36%, hsla(154.5, 50.42%, 46.67%, 0.68) 0, transparent 50%),
+      radial-gradient(at 8% 40%, hsla(214.79, 49.79%, 46.86%, 0.46) 0, transparent 50%);
+  }
+
+  /* Modern devices only */
+  @supports (animation-timeline: scroll()) {
+    .background-gradient {
+      background: linear-gradient(
+        300deg,
+        hwb(12 60% 18% / 0.431),
+        hsla(5, 50%, 47%, 0.287),
+        hsla(155, 50%, 47%, 0.265),
+        hsla(215, 50%, 47%, 0.336)
+      );
+      background-size: 300% 300%;
+      animation: moveGradient 120s ease infinite;
+    }
+
+    @keyframes moveGradient {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
   }
 
   @keyframes fadeIn {
