@@ -22,5 +22,10 @@ export function ChatStarter() {
   }, [starterQuestions, backend]);
 
   if (!starterQuestions?.length) return null;
-  return <StarterQuestions append={append} questions={starterQuestions} />;
+  return (
+    <div className="flex flex-col items-start gap-2 p-4 rounded-lg bg-gray-50">
+      <h3 className="text-sm font-medium text-gray-900">Suggested questions:</h3>
+      <StarterQuestions append={append} questions={starterQuestions} />
+    </div>
+  );
 }
