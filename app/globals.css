@@ -85,7 +85,15 @@
   }
   .background-gradient {
     background-color: #fff;
-    background-image: radial-gradient(
+    background-image: 
+      linear-gradient(
+        to bottom,
+        white 24%,
+        rgba(255, 255, 255, 0.8) 46%,
+        rgba(255, 255, 255, 0.3) 73%,
+        transparent
+      ),
+      radial-gradient(
         at 21% 11%,
         hsla(12.22, 36.99%, 71.37%, 0.53) 0,
         transparent 50%
@@ -98,13 +106,21 @@
   /* Modern devices only */
   @supports (animation-timeline: scroll()) {
     .background-gradient {
-      background: linear-gradient(
-        300deg,
-        hwb(12 60% 18% / 0.431),
-        hsla(5, 50%, 47%, 0.287),
-        hsla(155, 50%, 47%, 0.265),
-        hsla(215, 50%, 47%, 0.336)
-      );
+      background: 
+        linear-gradient(
+          to bottom,
+          white 24%,
+          rgba(255, 255, 255, 0.8) 46%,
+          rgba(255, 255, 255, 0.3) 73%,
+          transparent
+        ),
+        linear-gradient(
+          300deg,
+          hwb(12 60% 18% / 0.431),
+          hsla(5, 50%, 47%, 0.287),
+          hsla(155, 50%, 47%, 0.265),
+          hsla(215, 50%, 47%, 0.336)
+        );
       background-size: 300% 300%;
       animation: moveGradient 120s ease infinite;
     }
