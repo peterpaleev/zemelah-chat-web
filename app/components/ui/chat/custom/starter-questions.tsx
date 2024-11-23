@@ -1,10 +1,11 @@
 'use client'
 
+import { Message } from "ai";
 import { Button } from "../../button";
 
 interface StarterQuestionsProps {
   questions: string[];
-  append: (message: { role: string; content: string }) => void;
+  append: (message: Message | Omit<Message, "id">) => Promise<string | null | undefined>;
 }
 
 export function StarterQuestions({ questions, append }: StarterQuestionsProps) {
