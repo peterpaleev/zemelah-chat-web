@@ -23,7 +23,7 @@ export default function CustomChatMessages() {
         ))}
         <ChatMessages.Loading />
       </ChatMessages.List>
-      <ChatMessages.Actions />
+      {/* <ChatMessages.Actions /> */}
       <ChatStarter />
     </ChatMessages>
   );

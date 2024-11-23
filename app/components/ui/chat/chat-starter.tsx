@@ -1,7 +1,7 @@
 import { useChatUI } from "@llamaindex/chat-ui";
-import { StarterQuestions } from "@llamaindex/chat-ui/widgets";
 import { useEffect, useState } from "react";
 import { useClientConfig } from "./hooks/use-config";
+import { StarterQuestions } from "./custom/starter-questions";
 
 export function ChatStarter() {
   const { append } = useChatUI();
