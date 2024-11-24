@@ -1,13 +1,11 @@
 'use client'
 
-import { Message } from "ai";
 import { Button } from "../../button";
 
 interface StarterQuestionsProps {
   questions: string[];
-  append: (message: Message | Omit<Message, "id">) => Promise<string | null | undefined>;
+  append: (message: { role: 'user' | 'assistant' | 'system'; content: string }) => void;
 }
-
 export function StarterQuestions({ questions, append }: StarterQuestionsProps) {
   return (
     <div className="absolute bottom-6 left-0 w-full">

@@ -77,7 +77,9 @@ function ChatInputContent() {
           disabled={
             isLoading || (!input.trim() && files.length === 0 && !imageUrl)
           }
-        />
+        >
+          Отправить
+        </ChatInput.Submit>
       </ChatInput.Form>
     </ChatInput>
   );

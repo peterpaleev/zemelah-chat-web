@@ -1,0 +1,94 @@
+diff --git a/node_modules/@llamaindex/chat-ui/dist/chat/chat-input.js b/node_modules/@llamaindex/chat-ui/dist/chat/chat-input.js
+index e018c04..d731e31 100644
+--- a/node_modules/@llamaindex/chat-ui/dist/chat/chat-input.js
++++ b/node_modules/@llamaindex/chat-ui/dist/chat/chat-input.js
+@@ -67,9 +67,9 @@ function ChatInputField(props) {
+     const { handleKeyDown } = useChatInput();
+     const type = (_a = props.type) !== null && _a !== void 0 ? _a : 'textarea';
+     if (type === 'input') {
+-        return (_jsx(Input, { name: "input", placeholder: "Type a message", className: cn(props.className, 'min-h-0'), value: input, onChange: e => setInput(e.target.value) }));
++        return (_jsx(Input, { name: "input", placeholder: "С чем я могу вам помочь сегодня?", className: cn(props.className, 'min-h-0'), value: input, onChange: e => setInput(e.target.value) }));
+     }
+-    return (_jsx(Textarea, { name: "input", placeholder: "Type a message", className: cn(props.className, 'h-[40px] min-h-0 flex-1'), value: input, onChange: e => setInput(e.target.value), onKeyDown: handleKeyDown }));
++    return (_jsx(Textarea, { name: "input", placeholder: "С чем я могу вам помочь сегодня?", className: cn(props.className, 'h-[40px] min-h-0 flex-1'), value: input, onChange: e => setInput(e.target.value), onKeyDown: handleKeyDown }));
+ }
+ function ChatInputUpload(props) {
+     var _a, _b;
+@@ -91,7 +91,7 @@ function ChatInputUpload(props) {
+ function ChatInputSubmit(props) {
+     var _a, _b;
+     const { isDisabled } = useChatInput();
+-    return (_jsx(Button, { type: "submit", disabled: (_a = props.disabled) !== null && _a !== void 0 ? _a : isDisabled, className: cn(props.className), children: (_b = props.children) !== null && _b !== void 0 ? _b : 'Send message' }));
++    return (_jsx(Button, { type: "submit", disabled: (_a = props.disabled) !== null && _a !== void 0 ? _a : isDisabled, className: cn(props.className), children: (_b = props.children) !== null && _b !== void 0 ? _b : 'Отправить' }));
+ }
+ ChatInput.Form = ChatInputForm;
+ ChatInput.Field = ChatInputField;
+diff --git a/node_modules/@llamaindex/chat-ui/dist/widget/starter-questions.js b/node_modules/@llamaindex/chat-ui/dist/widget/starter-questions.js
+index ccfcd1b..e7eb6ba 100644
+--- a/node_modules/@llamaindex/chat-ui/dist/widget/starter-questions.js
++++ b/node_modules/@llamaindex/chat-ui/dist/widget/starter-questions.js
+@@ -2,5 +2,5 @@
+ import { jsx as _jsx } from "react/jsx-runtime";
+ import { Button } from '../ui/button';
+ export function StarterQuestions(props) {
+-    return (_jsx("div", { className: "absolute bottom-6 left-0 w-full", children: _jsx("div", { className: "mx-20 grid grid-cols-2 gap-2", children: props.questions.map((question, i) => (_jsx(Button, { variant: "outline", onClick: () => props.append({ role: 'user', content: question }), children: question }, i))) }) }));
++    return (_jsx("div", { className: "absolute bottom-6 left-0 w-full", children: _jsx("div", { className: "mx-20 grid gap-2", children: props.questions.map((question, i) => (_jsx(Button, { variant: "outline", onClick: () => props.append({ role: 'user', content: question }), children: question }, i))) }) }));
+ }
+diff --git a/node_modules/@llamaindex/chat-ui/src/chat/chat-input.tsx b/node_modules/@llamaindex/chat-ui/src/chat/chat-input.tsx
+index 8c04c38..de81040 100644
+--- a/node_modules/@llamaindex/chat-ui/src/chat/chat-input.tsx
++++ b/node_modules/@llamaindex/chat-ui/src/chat/chat-input.tsx
+@@ -125,7 +125,7 @@ function ChatInputField(props: ChatInputFieldProps) {
+     return (
+       <Input
+         name="input"
+-        placeholder="Type a message"
++        placeholder="С чем я могу вам помочь сегодня?"
+         className={cn(props.className, 'min-h-0')}
+         value={input}
+         onChange={e => setInput(e.target.value)}
+@@ -136,7 +136,7 @@ function ChatInputField(props: ChatInputFieldProps) {
+   return (
+     <Textarea
+       name="input"
+-      placeholder="Type a message"
++      placeholder="С чем я могу вам помочь сегодня?"
+       className={cn(props.className, 'h-[40px] min-h-0 flex-1')}
+       value={input}
+       onChange={e => setInput(e.target.value)}
+@@ -176,7 +176,7 @@ function ChatInputSubmit(props: ChatInputSubmitProps) {
+       disabled={props.disabled ?? isDisabled}
+       className={cn(props.className)}
+     >
+-      {props.children ?? 'Send message'}
++      {props.children ?? 'Отправить'}
+     </Button>
+   )
+ }
+diff --git a/node_modules/@llamaindex/chat-ui/src/chat/chat-messages.tsx b/node_modules/@llamaindex/chat-ui/src/chat/chat-messages.tsx
+index 36db41d..28d89fd 100644
+--- a/node_modules/@llamaindex/chat-ui/src/chat/chat-messages.tsx
++++ b/node_modules/@llamaindex/chat-ui/src/chat/chat-messages.tsx
+@@ -62,7 +62,8 @@ function ChatMessages(props: ChatMessagesProps) {
+   const children = props.children ?? (
+     <>
+       <ChatMessagesList />
+-      <ChatActions />
++      {/* Temporarily comment out ChatActions */}
++      {/* <ChatActions /> */}
+     </>
+   )
+ 
+diff --git a/node_modules/@llamaindex/chat-ui/src/widget/starter-questions.tsx b/node_modules/@llamaindex/chat-ui/src/widget/starter-questions.tsx
+index 65f77bc..7b14a97 100644
+--- a/node_modules/@llamaindex/chat-ui/src/widget/starter-questions.tsx
++++ b/node_modules/@llamaindex/chat-ui/src/widget/starter-questions.tsx
+@@ -11,7 +11,7 @@ interface StarterQuestionsProps {
+ export function StarterQuestions(props: StarterQuestionsProps) {
+   return (
+     <div className="absolute bottom-6 left-0 w-full">
+-      <div className="mx-20 grid grid-cols-2 gap-2">
++      <div className="mx-20 grid   gakp-2">
+         {props.questions.map((question, i) => (
+           <Button
+             key={i}
