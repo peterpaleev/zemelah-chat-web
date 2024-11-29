@@ -1,14 +1,15 @@
 import { useChatUI } from "@llamaindex/chat-ui";
 import { useEffect, useState } from "react";
 import { useClientConfig } from "./hooks/use-config";
-// import { StarterQuestions } from "./custom/starter-questions";
 import { StarterQuestions } from "@llamaindex/chat-ui/widgets";
 
-
 export function ChatStarter() {
-  const { append } = useChatUI();
+  const { append, messages } = useChatUI();
   const { backend } = useClientConfig();
   const [starterQuestions, setStarterQuestions] = useState<string[]>();
+
+  // Check if there are any user messages
+  const hasUserMessages = messages.some(message => message.role === 'user');
 
   useEffect(() => {
     if (!starterQuestions) {
@@ -23,6 +24,8 @@ export function ChatStarter() {
     }
   }, [starterQuestions, backend]);
 
-  if (!starterQuestions?.length) return null;
+  // Don't show starter questions if there are user messages
+  if (!starterQuestions?.length || hasUserMessages) return null;
+  
   return <StarterQuestions append={append} questions={starterQuestions} />;
 }
