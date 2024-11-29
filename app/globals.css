@@ -157,21 +157,22 @@
       width:calc(100% + 4px);
       height:calc(100% + 4px);
       background: linear-gradient(
-        45deg, 
-        #fb0094, 
-        #0000ff, 
-        #00ff00, 
-        #ffff00, 
-        #ff0000, 
-        #fb0094, 
-        #0000ff, 
-        #00ff00, 
-        #ffff00, 
-        #ff0000
+        45deg,
+        #ff69b4, /* Hot pink */
+        #ff1493, /* Deep pink */
+        #ff4500, /* Orange red */
+        #ff8c00, /* Dark orange */
+        #ffd700, /* Gold */
+        #ff69b4,
+        #ff1493,
+        #ff4500,
+        #ff8c00,
+        #ffd700
       );
-      background-size: 400%;
+        background-size: 400%;
       z-index:-1;
       animation: shadow 20s linear infinite;
+      border-radius: 14px;
     }
     
     &:after {
