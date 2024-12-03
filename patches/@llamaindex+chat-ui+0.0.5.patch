@@ -23,6 +23,171 @@ index e018c04..d731e31 100644
  }
  ChatInput.Form = ChatInputForm;
  ChatInput.Field = ChatInputField;
+diff --git a/node_modules/@llamaindex/chat-ui/dist/chat/chat-message.d.ts b/node_modules/@llamaindex/chat-ui/dist/chat/chat-message.d.ts
+index 85dab2b..349c0a0 100644
+--- a/node_modules/@llamaindex/chat-ui/dist/chat/chat-message.d.ts
++++ b/node_modules/@llamaindex/chat-ui/dist/chat/chat-message.d.ts
+@@ -1,5 +1,5 @@
+ /// <reference types="react" />
+-import { Message } from './chat.interface';
++import { Message } from '../../src/chat/chat.interface';
+ interface ChatMessageProps extends React.PropsWithChildren {
+     message: Message;
+     isLast: boolean;
+diff --git a/node_modules/@llamaindex/chat-ui/dist/chat/chat-messages.d.ts b/node_modules/@llamaindex/chat-ui/dist/chat/chat-messages.d.ts
+index 17e0752..7ebee93 100644
+--- a/node_modules/@llamaindex/chat-ui/dist/chat/chat-messages.d.ts
++++ b/node_modules/@llamaindex/chat-ui/dist/chat/chat-messages.d.ts
+@@ -1,5 +1,5 @@
+ /// <reference types="react" />
+-import type { Message } from './chat.interface';
++import type { Message } from '../../src/chat/chat.interface';
+ interface ChatMessagesProps extends React.PropsWithChildren {
+     className?: string;
+ }
+diff --git a/node_modules/@llamaindex/chat-ui/dist/chat/chat-section.d.ts b/node_modules/@llamaindex/chat-ui/dist/chat/chat-section.d.ts
+index 2c6e8a3..0339866 100644
+--- a/node_modules/@llamaindex/chat-ui/dist/chat/chat-section.d.ts
++++ b/node_modules/@llamaindex/chat-ui/dist/chat/chat-section.d.ts
+@@ -1,5 +1,5 @@
+ /// <reference types="react" />
+-import { type ChatHandler } from './chat.interface';
++import { type ChatHandler } from '../../src/chat/chat.interface';
+ export interface ChatSectionProps extends React.PropsWithChildren {
+     handler: ChatHandler;
+     className?: string;
+diff --git a/node_modules/@llamaindex/chat-ui/dist/chat/chat.context.d.ts b/node_modules/@llamaindex/chat-ui/dist/chat/chat.context.d.ts
+index fe61221..d12fe1c 100644
+--- a/node_modules/@llamaindex/chat-ui/dist/chat/chat.context.d.ts
++++ b/node_modules/@llamaindex/chat-ui/dist/chat/chat.context.d.ts
+@@ -1,5 +1,5 @@
+ /// <reference types="react" />
+-import { type ChatContext } from './chat.interface';
++import { type ChatContext } from '../../src/chat/chat.interface';
+ export declare const chatContext: import("react").Context<ChatContext | null>;
+ export declare const ChatProvider: import("react").Provider<ChatContext | null>;
+ export declare const useChatUI: () => ChatContext;
+diff --git a/node_modules/@llamaindex/chat-ui/dist/hook/use-file.d.ts b/node_modules/@llamaindex/chat-ui/dist/hook/use-file.d.ts
+index 1900325..8c7320f 100644
+--- a/node_modules/@llamaindex/chat-ui/dist/hook/use-file.d.ts
++++ b/node_modules/@llamaindex/chat-ui/dist/hook/use-file.d.ts
+@@ -1,5 +1,5 @@
+ /// <reference types="react" />
+-import { DocumentFile } from '../chat/annotation';
++import { DocumentFile } from '../../src/chat/annotation';
+ export declare function useFile({ uploadAPI }: {
+     uploadAPI: string;
+ }): {
+diff --git a/node_modules/@llamaindex/chat-ui/dist/index.d.ts b/node_modules/@llamaindex/chat-ui/dist/index.d.ts
+index 01cbb48..adff235 100644
+--- a/node_modules/@llamaindex/chat-ui/dist/index.d.ts
++++ b/node_modules/@llamaindex/chat-ui/dist/index.d.ts
+@@ -1,12 +1,12 @@
+-export * from './chat/chat.interface';
+-export * from './chat/annotation';
+-export { default as ChatSection } from './chat/chat-section';
+-export { default as ChatInput } from './chat/chat-input';
+-export { default as ChatMessages } from './chat/chat-messages';
+-export { default as ChatMessage, ContentPosition } from './chat/chat-message';
+-export { useChatUI } from './chat/chat.context';
+-export { useChatInput } from './chat/chat-input';
+-export { useChatMessages } from './chat/chat-messages';
+-export { useChatMessage } from './chat/chat-message';
+-export { useFile } from './hook/use-file';
++export * from '../src/chat/chat.interface';
++export * from '../src/chat/annotation';
++export { default as ChatSection } from '../src/chat/chat-section';
++export { default as ChatInput } from '../src/chat/chat-input';
++export { default as ChatMessages } from '../src/chat/chat-messages';
++export { default as ChatMessage, ContentPosition } from '../src/chat/chat-message';
++export { useChatUI } from '../src/chat/chat.context';
++export { useChatInput } from '../src/chat/chat-input';
++export { useChatMessages } from '../src/chat/chat-messages';
++export { useChatMessage } from '../src/chat/chat-message';
++export { useFile } from '../src/hook/use-file';
+ //# sourceMappingURL=index.d.ts.map
+\ No newline at end of file
+diff --git a/node_modules/@llamaindex/chat-ui/dist/widget/chat-agent-events.d.ts b/node_modules/@llamaindex/chat-ui/dist/widget/chat-agent-events.d.ts
+index e50f99b..a30e089 100644
+--- a/node_modules/@llamaindex/chat-ui/dist/widget/chat-agent-events.d.ts
++++ b/node_modules/@llamaindex/chat-ui/dist/widget/chat-agent-events.d.ts
+@@ -1,4 +1,4 @@
+-import { AgentEventData } from '../chat/annotation';
++import { AgentEventData } from '../../src/chat/annotation';
+ export declare function ChatAgentEvents({ data, isFinished, }: {
+     data: AgentEventData[];
+     isFinished: boolean;
+diff --git a/node_modules/@llamaindex/chat-ui/dist/widget/chat-events.d.ts b/node_modules/@llamaindex/chat-ui/dist/widget/chat-events.d.ts
+index 6abf6fa..66c46a3 100644
+--- a/node_modules/@llamaindex/chat-ui/dist/widget/chat-events.d.ts
++++ b/node_modules/@llamaindex/chat-ui/dist/widget/chat-events.d.ts
+@@ -1,4 +1,4 @@
+-import { EventData } from '../chat/annotation';
++import { EventData } from '../../src/chat/annotation';
+ export declare function ChatEvents({ data, isLast, isLoading, }: {
+     data: EventData[];
+     isLast: boolean;
+diff --git a/node_modules/@llamaindex/chat-ui/dist/widget/chat-files.d.ts b/node_modules/@llamaindex/chat-ui/dist/widget/chat-files.d.ts
+index 47e3e9a..e37e476 100644
+--- a/node_modules/@llamaindex/chat-ui/dist/widget/chat-files.d.ts
++++ b/node_modules/@llamaindex/chat-ui/dist/widget/chat-files.d.ts
+@@ -1,4 +1,4 @@
+-import { DocumentFileData } from '../chat/annotation';
++import { DocumentFileData } from '../../src/chat/annotation';
+ export declare function ChatFiles({ data }: {
+     data: DocumentFileData;
+ }): import("react/jsx-runtime").JSX.Element | null;
+diff --git a/node_modules/@llamaindex/chat-ui/dist/widget/chat-image.d.ts b/node_modules/@llamaindex/chat-ui/dist/widget/chat-image.d.ts
+index b609699..c039e75 100644
+--- a/node_modules/@llamaindex/chat-ui/dist/widget/chat-image.d.ts
++++ b/node_modules/@llamaindex/chat-ui/dist/widget/chat-image.d.ts
+@@ -1,4 +1,4 @@
+-import { type ImageData } from '../index';
++import { type ImageData } from '../../src/index';
+ export declare function ChatImage({ data }: {
+     data: ImageData;
+ }): import("react/jsx-runtime").JSX.Element;
+diff --git a/node_modules/@llamaindex/chat-ui/dist/widget/chat-sources.d.ts b/node_modules/@llamaindex/chat-ui/dist/widget/chat-sources.d.ts
+index 3157966..de1e57c 100644
+--- a/node_modules/@llamaindex/chat-ui/dist/widget/chat-sources.d.ts
++++ b/node_modules/@llamaindex/chat-ui/dist/widget/chat-sources.d.ts
+@@ -1,4 +1,4 @@
+-import { SourceData } from '../chat/annotation';
++import { SourceData } from '../../src/chat/annotation';
+ export declare function ChatSources({ data }: {
+     data: SourceData;
+ }): import("react/jsx-runtime").JSX.Element | null;
+diff --git a/node_modules/@llamaindex/chat-ui/dist/widget/document-preview.d.ts b/node_modules/@llamaindex/chat-ui/dist/widget/document-preview.d.ts
+index fe798ac..d22bf07 100644
+--- a/node_modules/@llamaindex/chat-ui/dist/widget/document-preview.d.ts
++++ b/node_modules/@llamaindex/chat-ui/dist/widget/document-preview.d.ts
+@@ -1,5 +1,5 @@
+ /// <reference types="react" />
+-import { DocumentFile, DocumentFileType } from '../chat/annotation';
++import { DocumentFile, DocumentFileType } from '../../src/chat/annotation';
+ export interface DocumentPreviewProps {
+     file: DocumentFile;
+     onRemove?: () => void;
+diff --git a/node_modules/@llamaindex/chat-ui/dist/widget/markdown.d.ts b/node_modules/@llamaindex/chat-ui/dist/widget/markdown.d.ts
+index 2869fbc..056adf0 100644
+--- a/node_modules/@llamaindex/chat-ui/dist/widget/markdown.d.ts
++++ b/node_modules/@llamaindex/chat-ui/dist/widget/markdown.d.ts
+@@ -1,4 +1,4 @@
+-import { SourceData } from '../chat/annotation';
++import { SourceData } from '../../src/chat/annotation';
+ export declare function Markdown({ content, sources, backend, }: {
+     content: string;
+     sources?: SourceData;
+diff --git a/node_modules/@llamaindex/chat-ui/dist/widget/starter-questions.d.ts b/node_modules/@llamaindex/chat-ui/dist/widget/starter-questions.d.ts
+index 0528b54..ec0d2ac 100644
+--- a/node_modules/@llamaindex/chat-ui/dist/widget/starter-questions.d.ts
++++ b/node_modules/@llamaindex/chat-ui/dist/widget/starter-questions.d.ts
+@@ -1,4 +1,4 @@
+-import { ChatHandler } from '../chat/chat.interface';
++import { ChatHandler } from '../../src/chat/chat.interface';
+ interface StarterQuestionsProps {
+     questions: string[];
+     append: ChatHandler['append'];
 diff --git a/node_modules/@llamaindex/chat-ui/dist/widget/starter-questions.js b/node_modules/@llamaindex/chat-ui/dist/widget/starter-questions.js
 index ccfcd1b..e7eb6ba 100644
 --- a/node_modules/@llamaindex/chat-ui/dist/widget/starter-questions.js
@@ -34,29 +199,80 @@ index ccfcd1b..e7eb6ba 100644
 -    return (_jsx("div", { className: "absolute bottom-6 left-0 w-full", children: _jsx("div", { className: "mx-20 grid grid-cols-2 gap-2", children: props.questions.map((question, i) => (_jsx(Button, { variant: "outline", onClick: () => props.append({ role: 'user', content: question }), children: question }, i))) }) }));
 +    return (_jsx("div", { className: "absolute bottom-6 left-0 w-full", children: _jsx("div", { className: "mx-20 grid gap-2", children: props.questions.map((question, i) => (_jsx(Button, { variant: "outline", onClick: () => props.append({ role: 'user', content: question }), children: question }, i))) }) }));
  }
+diff --git a/node_modules/@llamaindex/chat-ui/dist/widget/suggested-questions.d.ts b/node_modules/@llamaindex/chat-ui/dist/widget/suggested-questions.d.ts
+index 7a26eec..6ff55a7 100644
+--- a/node_modules/@llamaindex/chat-ui/dist/widget/suggested-questions.d.ts
++++ b/node_modules/@llamaindex/chat-ui/dist/widget/suggested-questions.d.ts
+@@ -1,5 +1,5 @@
+-import { SuggestedQuestionsData } from '../chat/annotation';
+-import { ChatHandler } from '../chat/chat.interface';
++import { SuggestedQuestionsData } from '../../src/chat/annotation';
++import { ChatHandler } from '../../src/chat/chat.interface';
+ export declare function SuggestedQuestions({ questions, append, isLastMessage, }: {
+     questions: SuggestedQuestionsData;
+     append?: Pick<ChatHandler, 'append'>['append'];
+diff --git a/node_modules/@llamaindex/chat-ui/dist/widgets.d.ts b/node_modules/@llamaindex/chat-ui/dist/widgets.d.ts
+index e546fac..1b0ae7b 100644
+--- a/node_modules/@llamaindex/chat-ui/dist/widgets.d.ts
++++ b/node_modules/@llamaindex/chat-ui/dist/widgets.d.ts
+@@ -1,14 +1,14 @@
+-export { ChatAgentEvents } from './widget/chat-agent-events';
+-export { ChatEvents } from './widget/chat-events';
+-export { ChatFiles } from './widget/chat-files';
+-export { ChatImage } from './widget/chat-image';
+-export { ChatSources } from './widget/chat-sources';
+-export { Markdown } from './widget/markdown';
+-export { CodeBlock } from './widget/codeblock';
+-export { PdfDialog } from './widget/pdf-dialog';
+-export { SuggestedQuestions } from './widget/suggested-questions';
+-export { StarterQuestions } from './widget/starter-questions';
+-export { DocumentPreview } from './widget/document-preview';
+-export { ImagePreview } from './widget/image-preview';
+-export { FileUploader } from './widget/file-uploader';
++export { ChatAgentEvents } from '../src/widget/chat-agent-events';
++export { ChatEvents } from '../src/widget/chat-events';
++export { ChatFiles } from '../src/widget/chat-files';
++export { ChatImage } from '../src/widget/chat-image';
++export { ChatSources } from '../src/widget/chat-sources';
++export { Markdown } from '../src/widget/markdown';
++export { CodeBlock } from '../src/widget/codeblock';
++export { PdfDialog } from '../src/widget/pdf-dialog';
++export { SuggestedQuestions } from '../src/widget/suggested-questions';
++export { StarterQuestions } from '../src/widget/starter-questions';
++export { DocumentPreview } from '../src/widget/document-preview';
++export { ImagePreview } from '../src/widget/image-preview';
++export { FileUploader } from '../src/widget/file-uploader';
+ //# sourceMappingURL=widgets.d.ts.map
+\ No newline at end of file
 diff --git a/node_modules/@llamaindex/chat-ui/src/chat/chat-input.tsx b/node_modules/@llamaindex/chat-ui/src/chat/chat-input.tsx
-index 8c04c38..de81040 100644
+index 8c04c38..a42ccf6 100644
 --- a/node_modules/@llamaindex/chat-ui/src/chat/chat-input.tsx
 +++ b/node_modules/@llamaindex/chat-ui/src/chat/chat-input.tsx
-@@ -125,7 +125,7 @@ function ChatInputField(props: ChatInputFieldProps) {
+@@ -120,12 +120,13 @@ function ChatInputField(props: ChatInputFieldProps) {
+   const { input, setInput } = useChatUI()
+   const { handleKeyDown } = useChatInput()
+   const type = props.type ?? 'textarea'
++  const placeholder = window.innerWidth <= 768 ? "Что вам найти?" : "С чем я могу вам помочь сегодня?"
+ 
+   if (type === 'input') {
      return (
        <Input
          name="input"
 -        placeholder="Type a message"
-+        placeholder="С чем я могу вам помочь сегодня?"
++        placeholder={placeholder}
          className={cn(props.className, 'min-h-0')}
          value={input}
          onChange={e => setInput(e.target.value)}
-@@ -136,7 +136,7 @@ function ChatInputField(props: ChatInputFieldProps) {
+@@ -136,7 +137,7 @@ function ChatInputField(props: ChatInputFieldProps) {
    return (
      <Textarea
        name="input"
 -      placeholder="Type a message"
-+      placeholder="С чем я могу вам помочь сегодня?"
++      placeholder={placeholder}
        className={cn(props.className, 'h-[40px] min-h-0 flex-1')}
        value={input}
        onChange={e => setInput(e.target.value)}
-@@ -176,7 +176,7 @@ function ChatInputSubmit(props: ChatInputSubmitProps) {
+@@ -176,7 +177,7 @@ function ChatInputSubmit(props: ChatInputSubmitProps) {
        disabled={props.disabled ?? isDisabled}
        className={cn(props.className)}
      >
