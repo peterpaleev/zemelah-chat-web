@@ -2,9 +2,12 @@ FROM --platform=linux/amd64 node:20-alpine as build
 
 WORKDIR /app
 
-# Install dependencies
+# Install dependencies and patches
 COPY package.json package-lock.* ./
+COPY patches ./patches/
 RUN npm install
+# Apply patches
+RUN npm run postinstall
 
 # Build the application
 COPY . .
