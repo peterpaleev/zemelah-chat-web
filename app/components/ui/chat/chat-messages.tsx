@@ -4,9 +4,28 @@ import { ChatMessage, ChatMessages, useChatUI } from "@llamaindex/chat-ui";
 import { ChatMessageAvatar } from "./chat-avatar";
 import { ChatMessageContent } from "./chat-message-content";
 import { ChatStarter } from "./chat-starter";
+import { useEffect, useState } from 'react';
 
 export default function CustomChatMessages() {
   const { messages } = useChatUI();
+  const [loadingMessage, setLoadingMessage] = useState("Думаю над ответом");
+
+  useEffect(() => {
+    const timer5sec = setTimeout(() => {
+      setLoadingMessage("Все еще думаю");
+    }, 5000);
+
+    const timer15sec = setTimeout(() => {
+      setLoadingMessage("Все еще думаю, но попробуйте обновить страницу, если ничего не меняется");
+    }, 15000);
+
+    // Cleanup timers when component unmounts or when messages change
+    return () => {
+      clearTimeout(timer5sec);
+      clearTimeout(timer15sec);
+    };
+  }, [messages]); // Reset timers when messages change
+
   return (
     <ChatMessages className="rainbow-shadow shadow-xl rounded-xl">
       <ChatMessages.List>
@@ -23,7 +42,7 @@ export default function CustomChatMessages() {
         ))}
         <ChatMessages.Loading>
           <span className="text-gray-500 animate-pulse">
-            Думаю над ответом
+            {loadingMessage}
             <span className="inline-flex w-4">
               <span className="animate-[ellipsis_1s_infinite]">.</span>
               <span className="animate-[ellipsis_1s_infinite_333ms]">.</span>
