@@ -13,14 +13,17 @@ export default function Header() {
           className="flex items-center justify-center font-nunito text-lg font-bold gap-2"
         >
           <span>Умный поиск по базе Земелах</span>
-          <Image
-            className="rounded-xl"
-            src={`${basePath}/zemelah-logo.png`}
-            alt="Zemelah Logo"
-            width={40}
-            height={40}
-            priority
-          />
+          <div className="relative">
+            <Image
+              className="rounded-xl"
+              src={`${basePath}/zemelah-logo.png`}
+              alt="Zemelah Logo"
+              width={40}
+              height={40}
+              priority
+            />
+            <span className="absolute -top-2 -right-10 text-xs font-bold text-gray-500">BETA</span>
+          </div>
         </a>
       </div>
     </div>
