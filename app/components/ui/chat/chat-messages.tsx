@@ -21,9 +21,17 @@ export default function CustomChatMessages() {
             <ChatMessage.Actions />
           </ChatMessage>
         ))}
-        <ChatMessages.Loading />
+        <ChatMessages.Loading>
+          <span className="text-gray-500 animate-pulse">
+            Думаю над ответом
+            <span className="inline-flex w-4">
+              <span className="animate-[ellipsis_1s_infinite]">.</span>
+              <span className="animate-[ellipsis_1s_infinite_333ms]">.</span>
+              <span className="animate-[ellipsis_1s_infinite_667ms]">.</span>
+            </span>
+          </span>
+        </ChatMessages.Loading>
       </ChatMessages.List>
-      {/* <ChatMessages.Actions /> */}
       <ChatStarter />
     </ChatMessages>
   );
