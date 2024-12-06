@@ -10,7 +10,7 @@ export default function Header() {
       <div className="bottom-0 left-0 mb-4 flex h-auto w-full items-end justify-center bg-gradient-to-t via-white lg:static lg:w-auto lg:bg-none lg:mb-0">
         <a
           href="https://www.zemelah.online/"
-          className="flex items-center justify-center font-nunito text-lg font-bold gap-2 px-4"
+          className="flex items-center justify-center font-nunito text-lg font-bold gap-2 px-4 pr-[65px] lg:pr-4"
         >
           <span className="text-center">Умный поиск по базе Земелах</span>
           <div className="relative flex-shrink-0">
