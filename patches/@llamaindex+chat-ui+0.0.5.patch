@@ -127,6 +127,19 @@ index 6abf6fa..66c46a3 100644
  export declare function ChatEvents({ data, isLast, isLoading, }: {
      data: EventData[];
      isLast: boolean;
+diff --git a/node_modules/@llamaindex/chat-ui/dist/widget/chat-events.js b/node_modules/@llamaindex/chat-ui/dist/widget/chat-events.js
+index 1b76924..ce02276 100644
+--- a/node_modules/@llamaindex/chat-ui/dist/widget/chat-events.js
++++ b/node_modules/@llamaindex/chat-ui/dist/widget/chat-events.js
+@@ -7,7 +7,7 @@ import { Collapsible, CollapsibleContent, CollapsibleTrigger, } from '../ui/coll
+ export function ChatEvents({ data, isLast, isLoading, }) {
+     const [isOpen, setIsOpen] = useState(false);
+     const showLoading = isLast && isLoading;
+-    const buttonLabel = isOpen ? 'Hide events' : 'Show events';
++    const buttonLabel = isOpen ? 'Скрыть события' : 'Ищу в текстах...';
+     const EventIcon = isOpen ? (_jsx(ChevronDown, { className: "h-4 w-4" })) : (_jsx(ChevronRight, { className: "h-4 w-4" }));
+     return (_jsx("div", { className: "border-l-2 border-indigo-400 pl-2", children: _jsxs(Collapsible, { open: isOpen, onOpenChange: setIsOpen, children: [_jsx(CollapsibleTrigger, { asChild: true, children: _jsxs(Button, { variant: "secondary", className: "space-x-2", children: [showLoading ? _jsx(Loader2, { className: "h-4 w-4 animate-spin" }) : null, _jsx("span", { children: buttonLabel }), EventIcon] }) }), _jsx(CollapsibleContent, { asChild: true, children: _jsx("div", { className: "mt-4 space-y-2 text-sm", children: data.map((eventItem, index) => (_jsx("div", { className: "whitespace-break-spaces", children: eventItem.title }, index))) }) })] }) }));
+ }
 diff --git a/node_modules/@llamaindex/chat-ui/dist/widget/chat-files.d.ts b/node_modules/@llamaindex/chat-ui/dist/widget/chat-files.d.ts
 index 47e3e9a..e37e476 100644
 --- a/node_modules/@llamaindex/chat-ui/dist/widget/chat-files.d.ts
@@ -295,6 +308,19 @@ index 36db41d..28d89fd 100644
      </>
    )
  
+diff --git a/node_modules/@llamaindex/chat-ui/src/widget/chat-events.tsx b/node_modules/@llamaindex/chat-ui/src/widget/chat-events.tsx
+index 44fd644..e9b373a 100644
+--- a/node_modules/@llamaindex/chat-ui/src/widget/chat-events.tsx
++++ b/node_modules/@llamaindex/chat-ui/src/widget/chat-events.tsx
+@@ -22,7 +22,7 @@ export function ChatEvents({
+   const [isOpen, setIsOpen] = useState(false)
+ 
+   const showLoading = isLast && isLoading
+-  const buttonLabel = isOpen ? 'Hide events' : 'Show events'
++  const buttonLabel = isOpen ? 'Скрыть события' : 'Ищу в архивах'
+ 
+   const EventIcon = isOpen ? (
+     <ChevronDown className="h-4 w-4" />
 diff --git a/node_modules/@llamaindex/chat-ui/src/widget/starter-questions.tsx b/node_modules/@llamaindex/chat-ui/src/widget/starter-questions.tsx
 index 65f77bc..7b14a97 100644
 --- a/node_modules/@llamaindex/chat-ui/src/widget/starter-questions.tsx

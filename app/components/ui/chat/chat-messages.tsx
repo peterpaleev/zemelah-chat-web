@@ -7,10 +7,15 @@ import { ChatStarter } from "./chat-starter";
 import { useEffect, useState } from 'react';
 
 export default function CustomChatMessages() {
-  const { messages } = useChatUI();
+  const { messages, isLoading } = useChatUI();
   const [loadingMessage, setLoadingMessage] = useState("Думаю над ответом");
 
   useEffect(() => {
+    if (!isLoading) {
+      setLoadingMessage("Думаю над ответом");
+      return;
+    }
+
     const timer5sec = setTimeout(() => {
       setLoadingMessage("Все еще думаю");
     }, 5000);
@@ -19,12 +24,11 @@ export default function CustomChatMessages() {
       setLoadingMessage("Все еще думаю, но попробуйте обновить страницу, если ничего не меняется");
     }, 15000);
 
-    // Cleanup timers when component unmounts or when messages change
     return () => {
       clearTimeout(timer5sec);
       clearTimeout(timer15sec);
     };
-  }, [messages]); // Reset timers when messages change
+  }, [isLoading]);
 
   return (
     <ChatMessages className="rainbow-shadow shadow-xl rounded-xl">
