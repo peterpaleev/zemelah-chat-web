@@ -7,10 +7,10 @@ index e018c04..d731e31 100644
      const type = (_a = props.type) !== null && _a !== void 0 ? _a : 'textarea';
      if (type === 'input') {
 -        return (_jsx(Input, { name: "input", placeholder: "Type a message", className: cn(props.className, 'min-h-0'), value: input, onChange: e => setInput(e.target.value) }));
-+        return (_jsx(Input, { name: "input", placeholder: "Что вам найти?", className: cn(props.className, 'min-h-0'), value: input, onChange: e => setInput(e.target.value) }));
++        return (_jsx(Input, { name: "input", placeholder: "С чем вам помочь?", className: cn(props.className, 'min-h-0'), value: input, onChange: e => setInput(e.target.value) }));
      }
 -    return (_jsx(Textarea, { name: "input", placeholder: "Type a message", className: cn(props.className, 'h-[40px] min-h-0 flex-1'), value: input, onChange: e => setInput(e.target.value), onKeyDown: handleKeyDown }));
-+    return (_jsx(Textarea, { name: "input", placeholder: "Что вам найти?", className: cn(props.className, 'h-[40px] min-h-0 flex-1'), value: input, onChange: e => setInput(e.target.value), onKeyDown: handleKeyDown }));
++    return (_jsx(Textarea, { name: "input", placeholder: "С чем вам помочь?", className: cn(props.className, 'h-[40px] min-h-0 flex-1'), value: input, onChange: e => setInput(e.target.value), onKeyDown: handleKeyDown }));
  }
  function ChatInputUpload(props) {
      var _a, _b;
@@ -265,7 +265,7 @@ index 8c04c38..a42ccf6 100644
    const { input, setInput } = useChatUI()
    const { handleKeyDown } = useChatInput()
    const type = props.type ?? 'textarea'
-+  const placeholder = window.innerWidth <= 768 ? "Что вам найти?" : "С чем я могу вам помочь сегодня?"
++  const placeholder = window.innerWidth <= 768 ? "С чем вам помочь?" : "С чем я могу вам помочь сегодня?"
  
    if (type === 'input') {
      return (
